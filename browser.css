@@ -1,0 +1,170 @@
+/* MiniBrowser – Dark Theme */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+
+    /* 🌈 fond dégradé moderne */
+    -fx-background-color: linear-gradient(to bottom right, #1e1e2e, #0f0f18);
+}
+
+/* ─────────────────────────────
+   TOP BAR
+───────────────────────────── */
+
+.root-pane {
+    -fx-background-color: transparent;
+}
+
+.top-section {
+    -fx-background-color: linear-gradient(to right, #2b2b55, #1e1e2e);
+    -fx-border-color: transparent transparent #6c5ce7 transparent;
+}
+
+.toolbar {
+    -fx-background-color: transparent;
+    -fx-padding: 8 12 8 12;
+}
+
+/* ─────────────────────────────
+   BOUTONS
+───────────────────────────── */
+
+.nav-btn, .tool-btn, .new-tab-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cdd6f4;
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-padding: 4 8;
+}
+
+.nav-btn:hover, .tool-btn:hover, .new-tab-btn:hover {
+    -fx-background-color: #3b3b66;
+    -fx-effect: dropshadow(gaussian, #6c5ce7, 8, 0.3, 0, 0);
+}
+
+.nav-btn:disabled {
+    -fx-opacity: 0.3;
+}
+
+/* GO BUTTON 🔥 */
+
+.go-btn {
+    -fx-background-color: linear-gradient(to right, #00d4ff, #6c5ce7);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.go-btn:hover {
+    -fx-background-color: linear-gradient(to right, #6c5ce7, #00d4ff);
+    -fx-effect: dropshadow(gaussian, #00d4ff, 10, 0.4, 0, 0);
+}
+
+/* ─────────────────────────────
+   URL BAR
+───────────────────────────── */
+
+.url-bar {
+    -fx-background-color: #2d2d42;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #888;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-color: #6c5ce7;
+    -fx-padding: 6 14;
+}
+
+.url-bar:focused {
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff, 10, 0.3, 0, 0);
+}
+
+/* ─────────────────────────────
+   TABS
+───────────────────────────── */
+
+.tab-bar {
+    -fx-background-color: #1e1e2e;
+}
+
+.browser-tab-pane .tab {
+    -fx-background-color: #2b2b55;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.browser-tab-pane .tab:selected {
+    -fx-background-color: linear-gradient(to right, #6c5ce7, #00d4ff);
+}
+
+.browser-tab-pane .tab-label {
+    -fx-text-fill: white;
+}
+
+/* ─────────────────────────────
+   SIDEBAR
+───────────────────────────── */
+
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #2b2b55, #1e1e2e);
+    -fx-border-color: transparent #6c5ce7 transparent transparent;
+}
+
+.side-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cdd6f4;
+}
+
+.side-list .list-cell:hover {
+    -fx-background-color: #3b3b66;
+}
+
+.side-list .list-cell:selected {
+    -fx-background-color: #6c5ce7;
+    -fx-text-fill: white;
+}
+
+/* ─────────────────────────────
+   STATUS BAR
+───────────────────────────── */
+
+.status-bar {
+    -fx-background-color: linear-gradient(to right, #1e1e2e, #2b2b55);
+}
+
+.status-label {
+    -fx-text-fill: #aaa;
+}
+
+/* ─────────────────────────────
+   PROGRESS BAR
+───────────────────────────── */
+
+.load-progress .track {
+    -fx-background-color: #2d2d42;
+}
+
+.load-progress .bar {
+    -fx-background-color: linear-gradient(to right, #00d4ff, #6c5ce7);
+}
+
+/* ─────────────────────────────
+   SCROLLBAR
+───────────────────────────── */
+
+.scroll-bar .thumb {
+    -fx-background-color: #6c5ce7;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #00d4ff;
+}
+
+/* ─────────────────────────────
+   EFFET GLOBAL
+───────────────────────────── */
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, #00d4ff, 10, 0.3, 0, 0);
+}
