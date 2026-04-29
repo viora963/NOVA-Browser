@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.BrowserController"
+            prefWidth="1100"
+            prefHeight="700">
+
+    <!-- TOP BAR -->
+    <top>
+        <HBox spacing="8"
+              style="-fx-padding: 10;
+                     -fx-background-color: #eeeeee;
+                     -fx-alignment: center;">
+
+            <Button fx:id="backButton"
+                    text="←"
+                    prefWidth="40"
+                    prefHeight="32"
+                    onAction="#goBack" />
+
+            <Button fx:id="forwardButton"
+                    text="→"
+                    prefWidth="40"
+                    prefHeight="32"
+                    onAction="#goForward" />
+
+            <Button fx:id="refreshButton"
+                    text="↻"
+                    prefWidth="40"
+                    prefHeight="32"
+                    onAction="#refreshPage" />
+
+            <TextField fx:id="addressBar"
+                       promptText="Enter URL..."
+                       prefHeight="32"
+                       HBox.hgrow="ALWAYS"
+                       onAction="#goToPage" />
+
+            <Button fx:id="goButton"
+                    text="Go"
+                    prefWidth="60"
+                    prefHeight="32"
+                    onAction="#goToPage" />
+
+        </HBox>
+    </top>
+
+    <!-- WEB PAGE DISPLAY -->
+    <center>
+        <WebView fx:id="webView" />
+    </center>
+
+</BorderPane>
