@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.BrowserController"
-            prefWidth="1100"
-            prefHeight="700">
+            prefWidth="1280"
+            prefHeight="760"
+            style="-fx-background-color: #f6f8fb;">
 
-    <!-- TOP BAR -->
     <top>
-        <HBox spacing="8"
-              style="-fx-padding: 10;
-                     -fx-background-color: #eeeeee;
-                     -fx-alignment: center;">
+        <VBox spacing="8" style="-fx-padding: 12; -fx-background-color: linear-gradient(to right, #101932, #132243);">
+            <HBox spacing="8" style="-fx-alignment: center-left;">
+                <Button fx:id="backButton" text="←" prefWidth="40" prefHeight="34" onAction="#goBack" />
+                <Button fx:id="forwardButton" text="→" prefWidth="40" prefHeight="34" onAction="#goForward" />
+                <Button fx:id="refreshButton" text="↻" prefWidth="40" prefHeight="34" onAction="#refreshPage" />
+                <Button fx:id="bookmarkButton" text="☆" prefWidth="40" prefHeight="34" onAction="#toggleFavorite" />
+                <Button text="Aura" prefWidth="65" prefHeight="34" onAction="#loadAuraHome" />
 
-            <Button fx:id="backButton"
-                    text="←"
-                    prefWidth="40"
-                    prefHeight="32"
-                    onAction="#goBack" />
+                <TextField fx:id="addressBar"
+                           promptText="Search URL or enter website"
+                           prefHeight="34"
+                           HBox.hgrow="ALWAYS"
+                           onAction="#goToPage" />
 
-            <Button fx:id="forwardButton"
-                    text="→"
-                    prefWidth="40"
-                    prefHeight="32"
-                    onAction="#goForward" />
+                <Button fx:id="goButton" text="Go" prefWidth="70" prefHeight="34" onAction="#goToPage" />
+            </HBox>
 
-            <Button fx:id="refreshButton"
-                    text="↻"
-                    prefWidth="40"
-                    prefHeight="32"
-                    onAction="#refreshPage" />
-
-            <TextField fx:id="addressBar"
-                       promptText="Enter URL..."
-                       prefHeight="32"
-                       HBox.hgrow="ALWAYS"
-                       onAction="#goToPage" />
-
-            <Button fx:id="goButton"
-                    text="Go"
-                    prefWidth="60"
-                    prefHeight="32"
-                    onAction="#goToPage" />
-
-        </HBox>
+            <HBox spacing="8" style="-fx-alignment: center-left;">
+                <TextField fx:id="searchField"
+                           promptText="Aura Smart Search: filter history/favorites or search web..."
+                           prefHeight="34"
+                           HBox.hgrow="ALWAYS"
+                           onAction="#searchWeb" />
+                <Button text="Search" prefWidth="85" prefHeight="34" onAction="#searchWeb" />
+            </HBox>
+        </VBox>
     </top>
 
-    <!-- WEB PAGE DISPLAY -->
+    <left>
+        <VBox spacing="8" prefWidth="315" style="-fx-padding: 10; -fx-background-color: #ffffff; -fx-border-color: #dfe3ea; -fx-border-width: 0 1 0 0;">
+            <Label text="Aura Advanced" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Label fx:id="statusLabel" text="History: 0 • Favorites: 0" style="-fx-text-fill: #45556f;" />
+
+            <Label text="Favorites" style="-fx-font-weight: bold;" />
+            <ListView fx:id="favoritesList" prefHeight="190" />
+
+            <Label text="History (search-aware)" style="-fx-font-weight: bold;" />
+            <ListView fx:id="historyList" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+
     <center>
-        <WebView fx:id="webView" />
+        <VBox>
+            <WebView fx:id="webView" VBox.vgrow="ALWAYS" />
+            <HBox style="-fx-padding: 8 12 8 12; -fx-background-color: #f2f4f8; -fx-border-color: #dfe3ea; -fx-border-width: 1 0 0 0;">
+                <Label text="Aura Browser • Advanced history + favorites + smart search" style="-fx-text-fill: #5f6f89;" />
+            </HBox>
+        </VBox>
     </center>
 
+    <padding>
+        <Insets top="0" right="0" bottom="0" left="0" />
+    </padding>
 </BorderPane>
