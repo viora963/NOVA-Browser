@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.minibrowser.controller.BrowserController"
+            styleClass="root-pane">
+
+    <top>
+        <VBox styleClass="top-section">
+            <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="6">
+                <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+
+                <Button fx:id="btnToggleSidebar" text="☰" styleClass="tool-btn"
+                        onAction="#onToggleSidebar" minWidth="34" minHeight="34"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnBack"    text="◀" styleClass="nav-btn" onAction="#onBack"    minWidth="34" minHeight="34"/>
+                <Button fx:id="btnForward" text="▶" styleClass="nav-btn" onAction="#onForward" minWidth="34" minHeight="34"/>
+                <Button fx:id="btnRefresh" text="↻" styleClass="nav-btn" onAction="#onRefresh" minWidth="34" minHeight="34"/>
+                <Button fx:id="btnHome"    text="⌂" styleClass="nav-btn" onAction="#onHome"    minWidth="34" minHeight="34"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="lblSecurity" text="" minWidth="22" styleClass="security-label"/>
+                <TextField fx:id="urlBar" styleClass="url-bar"
+                           promptText="Entrez une URL ou recherchez..."
+                           HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnGo" text="▶" styleClass="go-btn" onAction="#onGo" minWidth="34" minHeight="34"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnBookmark" text="☆" styleClass="tool-btn" onAction="#onBookmark" minWidth="34" minHeight="34"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox>
+            <VBox fx:id="sidebar" styleClass="sidebar" minWidth="240" maxWidth="300">
+                <TabPane fx:id="sidebarTabs" VBox.vgrow="ALWAYS"
+                         styleClass="sidebar-tab-pane" tabClosingPolicy="UNAVAILABLE">
+                    <Tab text="⭐ Favoris" closable="false">
+                        <ListView fx:id="bookmarkList" styleClass="side-list" prefHeight="600"/>
+                    </Tab>
+                    <Tab text="🕐 Historique" closable="false">
+                        <ListView fx:id="historyList" styleClass="side-list" prefHeight="600"/>
+                    </Tab>
+                </TabPane>
+            </VBox>
+
+            <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                <HBox styleClass="tab-bar" alignment="CENTER_LEFT">
+                    <TabPane fx:id="tabPane" styleClass="browser-tab-pane"
+                             tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnNewTab" text="＋" styleClass="new-tab-btn"
+                            onAction="#onNewTab" minWidth="36" minHeight="30"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="10">
+            <padding><Insets top="4" right="12" bottom="4" left="12"/></padding>
+            <Label fx:id="lblStatus" text="Prêt" styleClass="status-label" HBox.hgrow="ALWAYS"/>
+            <ProgressBar fx:id="progressBar" prefWidth="180" prefHeight="6"
+                         styleClass="load-progress" visible="false"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
