@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.BrowserController"
+            styleClass="root-pane">
+
+    <top>
+        <VBox styleClass="top-section">
+            <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="6">
+                <padding><Insets top="10" right="14" bottom="10" left="14"/></padding>
+
+                <Button fx:id="btnToggleSidebar" text="☰" styleClass="tool-btn"
+                        onAction="#onToggleSidebar" minWidth="36" minHeight="36"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnBack"    text="←" styleClass="nav-btn" onAction="#onBack"    minWidth="36" minHeight="36"/>
+                <Button fx:id="btnForward" text="→" styleClass="nav-btn" onAction="#onForward" minWidth="36" minHeight="36"/>
+                <Button fx:id="btnRefresh" text="⟳" styleClass="nav-btn" onAction="#onRefresh" minWidth="36" minHeight="36"/>
+                <Button fx:id="btnHome"    text="⌂" styleClass="nav-btn" onAction="#onHome"    minWidth="36" minHeight="36"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="lblSecurity" text="" minWidth="22" styleClass="security-label"/>
+                <TextField fx:id="urlBar" styleClass="url-bar"
+                           promptText="Search or enter a URL..."
+                           onAction="#onGo"
+                           HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnGo" text="Go" styleClass="go-btn" onAction="#onGo" minWidth="48" minHeight="36"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnBookmark" text="☆" styleClass="bookmark-btn" onAction="#onBookmark" minWidth="36" minHeight="36"/>
+                <Button fx:id="btnAi" text="✨" styleClass="ai-btn" onAction="#onToggleAi"
+                        minWidth="36" minHeight="36">
+                    <tooltip><Tooltip text="Ask Gemini AI about this page"/></tooltip>
+                </Button>
+                <Button fx:id="btnSettings" text="⚙" styleClass="tool-btn" onAction="#onSettings"
+                        minWidth="36" minHeight="36">
+                    <tooltip><Tooltip text="Settings"/></tooltip>
+                </Button>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox>
+            <VBox fx:id="sidebar" styleClass="sidebar" minWidth="280" maxWidth="320" prefWidth="280">
+                <TabPane fx:id="sidebarTabs" VBox.vgrow="ALWAYS"
+                         styleClass="sidebar-tab-pane" tabClosingPolicy="UNAVAILABLE">
+                    <Tab text="⭐  Bookmarks" closable="false">
+                        <VBox styleClass="side-content" VBox.vgrow="ALWAYS">
+                            <HBox styleClass="side-header" alignment="CENTER_LEFT" spacing="6">
+                                <padding><Insets top="8" right="10" bottom="8" left="10"/></padding>
+                                <Label text="Saved pages" styleClass="side-header-label" HBox.hgrow="ALWAYS"/>
+                                <Button fx:id="btnRemoveBookmark" text="🗑" styleClass="side-action-btn"
+                                        onAction="#onRemoveBookmark" minWidth="30" minHeight="28"/>
+                            </HBox>
+                            <ListView fx:id="bookmarkList" styleClass="side-list" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </Tab>
+                    <Tab text="🕐  History" closable="false">
+                        <VBox styleClass="side-content" VBox.vgrow="ALWAYS">
+                            <HBox styleClass="side-header" alignment="CENTER_LEFT" spacing="6">
+                                <padding><Insets top="8" right="10" bottom="8" left="10"/></padding>
+                                <Label text="Recent visits" styleClass="side-header-label" HBox.hgrow="ALWAYS"/>
+                                <Button fx:id="btnClearHistory" text="Clear" styleClass="side-action-btn"
+                                        onAction="#onClearHistory" minHeight="28"/>
+                            </HBox>
+                            <ListView fx:id="historyList" styleClass="side-list" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </Tab>
+                </TabPane>
+            </VBox>
+
+            <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                <HBox styleClass="tab-bar" alignment="CENTER_LEFT">
+                    <TabPane fx:id="tabPane" styleClass="browser-tab-pane"
+                             tabClosingPolicy="ALL_TABS" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnNewTab" text="＋" styleClass="new-tab-btn"
+                            onAction="#onNewTab" minWidth="38" minHeight="32"/>
+                </HBox>
+            </VBox>
+
+            <VBox fx:id="aiPanel" styleClass="ai-panel" minWidth="360" maxWidth="420" prefWidth="380">
+                <HBox styleClass="ai-header" alignment="CENTER_LEFT" spacing="8">
+                    <padding><Insets top="12" right="14" bottom="12" left="14"/></padding>
+                    <Label text="✨" styleClass="ai-header-icon"/>
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label text="Gemini AI" styleClass="ai-header-title"/>
+                        <Label fx:id="aiSubtitle" text="Ask anything about this page" styleClass="ai-header-subtitle"/>
+                    </VBox>
+                    <Button fx:id="btnClearChat" text="🗑" styleClass="side-action-btn"
+                            onAction="#onClearChat" minWidth="30" minHeight="28">
+                        <tooltip><Tooltip text="Clear conversation"/></tooltip>
+                    </Button>
+                    <Button text="✕" styleClass="side-action-btn"
+                            onAction="#onToggleAi" minWidth="30" minHeight="28">
+                        <tooltip><Tooltip text="Close"/></tooltip>
+                    </Button>
+                </HBox>
+
+                <HBox styleClass="ai-quick-actions" spacing="6">
+                    <padding><Insets top="6" right="12" bottom="10" left="12"/></padding>
+                    <Button fx:id="btnSummarize" text="📄  Summarize page" styleClass="ai-quick-btn"
+                            onAction="#onSummarize" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnExplain" text="💡  Explain" styleClass="ai-quick-btn"
+                            onAction="#onExplain" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <ScrollPane fx:id="aiScroll" styleClass="ai-scroll" VBox.vgrow="ALWAYS"
+                            fitToWidth="true" hbarPolicy="NEVER">
+                    <VBox fx:id="aiMessages" styleClass="ai-messages" spacing="10">
+                        <padding><Insets top="12" right="14" bottom="12" left="14"/></padding>
+                    </VBox>
+                </ScrollPane>
+
+                <VBox styleClass="ai-input-bar">
+                    <padding><Insets top="10" right="12" bottom="12" left="12"/></padding>
+                    <HBox spacing="6" alignment="CENTER">
+                        <TextField fx:id="aiInput" styleClass="ai-input"
+                                   promptText="Ask Gemini..."
+                                   onAction="#onAiSend"
+                                   HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnAiSend" text="↑" styleClass="ai-send-btn"
+                                onAction="#onAiSend" minWidth="40" minHeight="40"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="10">
+            <padding><Insets top="5" right="12" bottom="5" left="12"/></padding>
+            <Label fx:id="lblStatus" text="Ready" styleClass="status-label" HBox.hgrow="ALWAYS"/>
+            <ProgressBar fx:id="progressBar" prefWidth="180" prefHeight="6"
+                         styleClass="load-progress" visible="false"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

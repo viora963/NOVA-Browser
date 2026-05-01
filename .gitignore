@@ -1,0 +1,46 @@
+# ─────────────────────────────────────
+#  Nova Browser — .gitignore
+# ─────────────────────────────────────
+
+# Compiled Java classes
+out/
+bin/
+*.class
+
+# VS Code Java
+.classpath
+.project
+.settings/
+*.launch
+
+# VS Code general
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse
+*.prefs
+.metadata/
+
+# JavaFX SDK (should not be committed — too large)
+javafx-sdk*/
+openjfx*/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bak
+*.swp
