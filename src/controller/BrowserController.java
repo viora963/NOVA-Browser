@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -45,6 +46,7 @@ public class BrowserController implements Initializable {
 
     @FXML private TabPane tabPane;
     @FXML private Button btnNewTab;
+    @FXML private Region newTabSpacer;
 
     @FXML private Label lblStatus;
     @FXML private ProgressBar progressBar;
@@ -413,8 +415,29 @@ public class BrowserController implements Initializable {
         setupSidebar();
         setupSidebarInteractions();
         setupTabCloseHandler();
+        setupNewTabButton();
         setupAiPanel();
         createNewTab(HOME);
+    }
+
+    /** Position the "+" button right after the last tab by binding spacer width to tab count. */
+    private void setupNewTabButton() {
+        // Each tab is between 140 (min) and 220 (max) css px wide. We use a reasonable
+        // estimate per tab; the spacer pushes the + button right after the last tab.
+        // The tab-header-area has 6px of left padding, included in the offset.
+        final double tabHeaderLeftPad = 6.0;
+        final double estimatedTabWidth = 156.0; // tab + ~2 px gap, matches default rendering
+
+        Runnable updateSpacer = () -> {
+            int count = tabPane.getTabs().size();
+            double width = tabHeaderLeftPad + (count * estimatedTabWidth);
+            newTabSpacer.setPrefWidth(width);
+            newTabSpacer.setMinWidth(width);
+            newTabSpacer.setMaxWidth(width);
+        };
+
+        updateSpacer.run();
+        tabPane.getTabs().addListener((ListChangeListener<Tab>) c -> updateSpacer.run());
     }
 
     /** When the last tab is closed, exit the application entirely. */

@@ -1,8 +1,8 @@
-C:\Users\nova9\Documents\novaAi_logo\src\MainApp.java
-C:\Users\nova9\Documents\novaAi_logo\src\controller\BrowserController.java
-C:\Users\nova9\Documents\novaAi_logo\src\model\Bookmark.java
-C:\Users\nova9\Documents\novaAi_logo\src\model\BrowserTab.java
-C:\Users\nova9\Documents\novaAi_logo\src\model\HistoryEntry.java
-C:\Users\nova9\Documents\novaAi_logo\src\service\GeminiClient.java
-C:\Users\nova9\Documents\novaAi_logo\src\service\Settings.java
-C:\Users\nova9\Documents\novaAi_logo\src\util\UrlUtils.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\MainApp.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\controller\BrowserController.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\model\Bookmark.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\model\BrowserTab.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\model\HistoryEntry.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\service\GeminiClient.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\service\Settings.java
+C:\Users\nova9\Downloads\nova_git_updated\nova_git\src\util\UrlUtils.java

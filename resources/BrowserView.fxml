@@ -73,12 +73,20 @@
             </VBox>
 
             <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-                <HBox styleClass="tab-bar" alignment="CENTER_LEFT">
+                <StackPane styleClass="tab-bar" alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
                     <TabPane fx:id="tabPane" styleClass="browser-tab-pane"
-                             tabClosingPolicy="ALL_TABS" HBox.hgrow="ALWAYS"/>
-                    <Button fx:id="btnNewTab" text="＋" styleClass="new-tab-btn"
-                            onAction="#onNewTab" minWidth="38" minHeight="32"/>
-                </HBox>
+                             tabClosingPolicy="ALL_TABS"/>
+                    <HBox fx:id="newTabButtonBar" alignment="TOP_LEFT" pickOnBounds="false"
+                          maxHeight="40">
+                        <padding><Insets top="6" left="0"/></padding>
+                        <Region fx:id="newTabSpacer" mouseTransparent="true"/>
+                        <Button fx:id="btnNewTab" text="+" styleClass="new-tab-btn"
+                                onAction="#onNewTab" minWidth="32" minHeight="32"
+                                prefWidth="32" prefHeight="32">
+                            <tooltip><Tooltip text="New tab (Ctrl+T)"/></tooltip>
+                        </Button>
+                    </HBox>
+                </StackPane>
             </VBox>
 
             <VBox fx:id="aiPanel" styleClass="ai-panel" minWidth="360" maxWidth="420" prefWidth="380">
